@@ -7,7 +7,16 @@ declare module '@vue/runtime-core' {
   }
 }
 
-const api = axios.create({ baseURL: 'https://api.example.com' });
+const api = axios.create({
+  baseURL: 'https://api.openweathermap.org/data/2.5/',
+  params: {
+    lat: 39.719,
+    lon: 47.239,
+    lang: 'ru',
+    appid: '08bcf2bb99c0e82d2b9d0d531384ba9f',
+    units: 'metric',
+  },
+});
 
 export default boot(({ app }) => {
   app.config.globalProperties.$axios = axios;

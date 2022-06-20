@@ -27,17 +27,6 @@ ChartJS.register(
   CategoryScale
 );
 
-// const chartData = ref({
-//   labels: ['January', 'February', 'March'],
-//   datasets: [
-//     {
-//       label: 'Data One',
-//       backgroundColor: '#f87979',
-//       data: [40, 20, 12],
-//     },
-//   ],
-// });
-
 let weatherLabels = ref([]);
 let weatherData = ref([]);
 

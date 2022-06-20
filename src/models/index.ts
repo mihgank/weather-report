@@ -1,6 +1,7 @@
 export interface WeatherNode {
   weather: Array<Weather>;
   main: Main;
+  dt_txt: string;
 }
 
 interface Main {
@@ -10,7 +11,7 @@ interface Main {
 
 interface Weather {
   id: number;
-  main: string;
+  main: 'Clear' | 'Clouds' | 'Rain' | 'Snow';
   description: string;
   icon: string;
 }

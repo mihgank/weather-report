@@ -28,7 +28,6 @@ import { ref, onMounted } from 'vue';
 import { WeatherNode } from 'src/models';
 import WeatherCard from './WeatherCard.vue';
 import WeatherChart from './WeatherChart.vue';
-import dateTransform from 'src/utils';
 
 let weatherList = ref<WeatherNode[]>([]);
 let weatherLabels = ref([]);
@@ -40,9 +39,7 @@ const forecastRequest = async () => {
   if (data.list.length > 0) {
     weatherList.value = data.list;
 
-    weatherLabels.value = data.list.map((el: WeatherNode) =>
-      dateTransform(el.dt)
-    );
+    weatherLabels.value = data.list.map((el: WeatherNode) => el.dt);
     weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
 
     let summaryTemp = 0;

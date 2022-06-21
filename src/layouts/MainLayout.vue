@@ -1,7 +1,5 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated> </q-header>
-
     <q-page-container class="q-my-md">
       <router-view />
     </q-page-container>

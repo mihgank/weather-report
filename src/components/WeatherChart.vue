@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { Line } from 'vue-chartjs';
 import { computed } from 'vue';
+import moment from 'moment';
 import {
   Chart as ChartJS,
   Title,
@@ -15,6 +16,11 @@ import {
   PointElement,
   CategoryScale,
 } from 'chart.js';
+
+const props = defineProps<{
+  weatherLabels: Array<number>;
+  weatherData: Array<number>;
+}>();
 
 ChartJS.register(
   Title,
@@ -28,7 +34,9 @@ ChartJS.register(
 
 const chartData = computed(() => {
   return {
-    labels: props.weatherLabels,
+    labels: props.weatherLabels.map((timestamp) => {
+      return moment(new Date(timestamp * 1000)).format('dd. hh:mm');
+    }),
     datasets: [
       {
         label: 'Ростов-на-Дону',
@@ -45,9 +53,4 @@ const chartStyles = computed(() => {
     position: 'relative',
   };
 });
-
-const props = defineProps<{
-  weatherLabels: Array<string>;
-  weatherData: Array<number>;
-}>();
 </script>

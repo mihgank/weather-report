@@ -1,13 +1,14 @@
 <template>
-  <q-card class="weather-card">
+  <q-card class="weather-card q-px-md">
     <q-card-section class="text-white">
+      <p>
+        <b>{{ data.main.temp }} °C</b>
+      </p>
+
+      <q-icon :name="icon"></q-icon> {{ data.weather[0].description }}
       <p v-if="!current">
         {{ dateTransform(data.dt) }}
       </p>
-      <div class="text-h6">
-        <p><q-icon :name="icon"></q-icon> {{ data.weather[0].description }}</p>
-      </div>
-      <div class="text-subtitle2">{{ data.main.temp }} °C</div>
     </q-card-section>
   </q-card>
 </template>

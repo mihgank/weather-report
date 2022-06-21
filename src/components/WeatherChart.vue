@@ -32,25 +32,21 @@ ChartJS.register(
   CategoryScale
 );
 
-const chartData = computed(() => {
-  return {
-    labels: props.weatherLabels.map((timestamp) => {
-      return moment(new Date(timestamp * 1000)).format('dd. hh:mm');
-    }),
-    datasets: [
-      {
-        label: 'Ростов-на-Дону',
-        borderColor: '#f87979',
-        backgroundColor: '#fff',
-        data: props.weatherData,
-      },
-    ],
-  };
-});
+const chartData = computed(() => ({
+  labels: props.weatherLabels.map((timestamp) =>
+    moment(timestamp * 1000).format('dd. hh:mm')
+  ),
+  datasets: [
+    {
+      label: 'Ростов-на-Дону',
+      borderColor: '#f87979',
+      backgroundColor: '#fff',
+      data: props.weatherData,
+    },
+  ],
+}));
 
-const chartStyles = computed(() => {
-  return {
-    position: 'relative',
-  };
-});
+const chartStyles = computed(() => ({
+  position: 'relative',
+}));
 </script>

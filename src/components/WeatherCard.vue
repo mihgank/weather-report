@@ -1,5 +1,5 @@
 <template>
-  <q-card class="weather-card">
+  <q-card class="weather-card q-px-md">
     <q-card-section class="text-white">
       <p v-if="!current">
         {{ dateTransform(data.dt) }}

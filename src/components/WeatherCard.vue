@@ -4,10 +4,11 @@
       <p>
         <b>{{ data.main.temp }} °C</b>
       </p>
+
+      <q-icon :name="icon"></q-icon> {{ data.weather[0].description }}
       <p v-if="!current">
         {{ dateTransform(data.dt) }}
       </p>
-      <q-icon :name="icon"></q-icon> {{ data.weather[0].description }}
     </q-card-section>
   </q-card>
 </template>

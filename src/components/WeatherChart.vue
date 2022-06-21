@@ -31,7 +31,7 @@ ChartJS.register(
   PointElement,
   CategoryScale
 );
-
+moment.locale('RU');
 const chartData = computed(() => {
   return {
     labels: props.weatherLabels.map((timestamp) => {

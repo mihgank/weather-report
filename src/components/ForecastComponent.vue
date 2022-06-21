@@ -1,10 +1,12 @@
 <template>
-  <div class="col-12 q-pa-md">
-    <div class="row justify-center q-mb-md">
-      <h3>Погода на следующие 3 дня</h3>
+  <section class="col-12 q-pa-md rectangle-wrapper">
+    <div class="row q-mb-md justify-center">
+      <p class="rectangle-wrapper__title">Погода на следующие 3 дня</p>
     </div>
     <div class="row justify-center">
-      <h4>Средняя температура : {{ averageTemp }} °C</h4>
+      <p class="rectangle-wrapper__subtitle">
+        Средняя температура : {{ averageTemp }} °C
+      </p>
     </div>
 
     <WeatherChart
@@ -17,7 +19,7 @@
       v-for="weatherPoint in weatherList"
       :data="weatherPoint"
     />
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -33,9 +35,8 @@ let weatherLabels = ref([]);
 let weatherData = ref([]);
 let averageTemp = ref();
 
-onMounted(async () => {
+const forecastRequest = async () => {
   const { data } = await api.get('forecast');
-
   if (data.list.length > 0) {
     weatherList.value = data.list;
 
@@ -50,5 +51,10 @@ onMounted(async () => {
     }
     averageTemp.value = (summaryTemp / 40).toFixed(2);
   }
+  setTimeout(forecastRequest, 60000);
+};
+
+onMounted(async () => {
+  await forecastRequest();
 });
 </script>

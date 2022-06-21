@@ -1,5 +1,5 @@
 <template>
-  <Line :chart-data="chartData" />
+  <Line :styles="chartStyles" :chart-data="chartData" />
 </template>
 
 <script setup lang="ts">
@@ -33,10 +33,16 @@ const chartData = computed(() => {
       {
         label: 'Ростов-на-Дону',
         borderColor: '#f87979',
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         data: props.weatherData,
       },
     ],
+  };
+});
+
+const chartStyles = computed(() => {
+  return {
+    position: 'relative',
   };
 });
 
@@ -44,12 +50,4 @@ const props = defineProps<{
   weatherLabels: Array<string>;
   weatherData: Array<number>;
 }>();
-// onMounted(async () => {
-//   const { data } = await api.get('forecast');
-
-//   if (data.list.length > 0) {
-//     weatherLabels.value = data.list.map((el: WeatherNode) => new Date(el.dt));
-//     weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
-//   }
-// });
 </script>

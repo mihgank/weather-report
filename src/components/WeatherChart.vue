@@ -3,9 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { api } from 'src/boot/axios';
 import { Line } from 'vue-chartjs';
-import { ref, onMounted, computed } from 'vue';
+import { computed } from 'vue';
 import {
   Chart as ChartJS,
   Title,
@@ -16,7 +15,6 @@ import {
   PointElement,
   CategoryScale,
 } from 'chart.js';
-import { WeatherNode } from 'src/models';
 
 ChartJS.register(
   Title,
@@ -28,29 +26,30 @@ ChartJS.register(
   CategoryScale
 );
 
-let weatherLabels = ref([]);
-let weatherData = ref([]);
-
 const chartData = computed(() => {
   return {
-    labels: weatherLabels.value,
+    labels: props.weatherLabels,
     datasets: [
       {
         label: 'Ростов-на-Дону',
         borderColor: '#f87979',
         backgroundColor: '#000',
-        data: weatherData.value,
+        data: props.weatherData,
       },
     ],
   };
 });
 
-onMounted(async () => {
-  const { data } = await api.get('forecast');
+const props = defineProps<{
+  weatherLabels: Array<string>;
+  weatherData: Array<number>;
+}>();
+// onMounted(async () => {
+//   const { data } = await api.get('forecast');
 
-  if (data.list.length > 0) {
-    weatherLabels.value = data.list.map((el: WeatherNode) => el.dt_txt);
-    weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
-  }
-});
+//   if (data.list.length > 0) {
+//     weatherLabels.value = data.list.map((el: WeatherNode) => new Date(el.dt));
+//     weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
+//   }
+// });
 </script>

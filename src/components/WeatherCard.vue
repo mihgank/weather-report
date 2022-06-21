@@ -4,7 +4,7 @@
       <div class="text-h6">
         <p><q-icon :name="icon"></q-icon> {{ data.weather[0].description }}</p>
       </div>
-      <div class="text-subtitle2">{{ data.main.temp }}</div>
+      <div class="text-subtitle2">{{ data.main.temp }} °C</div>
     </q-card-section>
   </q-card>
 </template>
@@ -31,9 +31,6 @@ let icon = computed(() => {
 
 const props = defineProps<{
   data: WeatherNode;
-  current: {
-    type: boolean;
-    default: false;
-  };
+  current?: boolean;
 }>();
 </script>

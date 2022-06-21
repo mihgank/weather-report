@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="main-layout">
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title> Тестовое задание "Прогноз погоды" </q-toolbar-title>
@@ -13,3 +13,5 @@
 </template>
 
 <script setup lang="ts"></script>
+
+<style></style>

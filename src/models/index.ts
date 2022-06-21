@@ -1,7 +1,7 @@
 export interface WeatherNode {
   weather: Array<Weather>;
   main: Main;
-  dt_txt: string;
+  dt: number;
 }
 
 interface Main {

@@ -1,7 +1,12 @@
 <template>
   <div class="col-12 q-pa-md">
-    <title>Погода на следующие 3 дня</title>
-    <p>Средняя температура : {{ averageTemp }}</p>
+    <div class="row justify-center q-mb-md">
+      <h3>Погода на следующие 3 дня</h3>
+    </div>
+    <div class="row justify-center">
+      <h4>Средняя температура : {{ averageTemp }}</h4>
+    </div>
+
     <WeatherChart
       :weatherLabels="weatherLabels"
       :weatherData="weatherData"
@@ -22,21 +27,6 @@ import { WeatherNode } from 'src/models';
 import WeatherCard from './WeatherCard.vue';
 import WeatherChart from './WeatherChart.vue';
 import moment from 'moment';
-// const wt_card = ref<WeatherNode>({
-//   weather: [
-//     {
-//       id: 800,
-//       main: 'Clear',
-//       description: 'ясно',
-//       icon: '01n',
-//     },
-//   ],
-//   main: {
-//     temp: 37.2,
-//     feels_like: 22.09,
-//   },
-//   dt: 1655802000,
-// });
 
 let weatherList = ref<WeatherNode[]>([]);
 let weatherLabels = ref([]);

@@ -1,12 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="main-layout">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title> Тестовое задание "Прогноз погоды" </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+  <q-layout view="lHh Lpr lFf">
+    <q-header elevated> </q-header>
 
-    <q-page-container>
+    <q-page-container class="q-my-md">
       <router-view />
     </q-page-container>
   </q-layout>

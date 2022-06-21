@@ -1,6 +1,6 @@
 <template>
-  <q-card class="my-card">
-    <q-card-section class="bg-blue text-white">
+  <q-card class="weather-card">
+    <q-card-section class="text-white">
       <div class="text-h6">
         <p><q-icon :name="icon"></q-icon> {{ data.weather[0].description }}</p>
       </div>

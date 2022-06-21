@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly container">
-    <ForecastComponent />
-    <CurrentWeather />
+    <CurrentWeather class="rectangle-wrapper q-pa-md q-mb-sm" />
+    <ForecastComponent class="rectangle-wrapper" />
   </q-page>
 </template>
 

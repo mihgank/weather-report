@@ -1,6 +1,9 @@
 <template>
   <q-card class="weather-card">
     <q-card-section class="text-white">
+      <p v-if="!current">
+        {{ dateTransform(data.dt) }}
+      </p>
       <div class="text-h6">
         <p><q-icon :name="icon"></q-icon> {{ data.weather[0].description }}</p>
       </div>
@@ -10,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import dateTransform from 'src/utils';
 import { computed } from 'vue';
 import { WeatherNode } from 'src/models/index';
 

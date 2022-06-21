@@ -4,7 +4,7 @@
       <h3>Погода на следующие 3 дня</h3>
     </div>
     <div class="row justify-center">
-      <h4>Средняя температура : {{ averageTemp }}</h4>
+      <h4>Средняя температура : {{ averageTemp }} °C</h4>
     </div>
 
     <WeatherChart
@@ -26,7 +26,7 @@ import { ref, onMounted } from 'vue';
 import { WeatherNode } from 'src/models';
 import WeatherCard from './WeatherCard.vue';
 import WeatherChart from './WeatherChart.vue';
-import moment from 'moment';
+import dateTransform from 'src/utils';
 
 let weatherList = ref<WeatherNode[]>([]);
 let weatherLabels = ref([]);
@@ -40,7 +40,7 @@ onMounted(async () => {
     weatherList.value = data.list;
 
     weatherLabels.value = data.list.map((el: WeatherNode) =>
-      moment(String(new Date(el.dt * 1000))).format('MM/DD/YYYY hh:mm')
+      dateTransform(el.dt)
     );
     weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
 

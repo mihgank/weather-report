@@ -4,12 +4,6 @@
       <h3>Текущая погода в Ростове-на-Дону</h3>
     </div>
     <WeatherCard v-if="currentWeather" :data="currentWeather" />
-    <!-- <p>Current temperature</p>
-    <p>{{ currentWeather?.main.temp }} °C</p>
-    Weather
-    <p :key="weather.id" v-for="weather in currentWeather?.weather">
-      {{ weather.description }}
-    </p> -->
   </div>
 </template>
 

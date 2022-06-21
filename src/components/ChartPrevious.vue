@@ -16,6 +16,7 @@ import {
   PointElement,
   CategoryScale,
 } from 'chart.js';
+import { WeatherNode } from 'src/models';
 
 ChartJS.register(
   Title,
@@ -48,8 +49,8 @@ onMounted(async () => {
   const { data } = await api.get('forecast');
 
   if (data.list.length > 0) {
-    weatherLabels.value = data.list.map((el) => el.dt_txt);
-    weatherData.value = data.list.map((el) => el.main.temp);
+    weatherLabels.value = data.list.map((el: WeatherNode) => el.dt_txt);
+    weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
   }
 });
 </script>

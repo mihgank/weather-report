@@ -1,0 +1,72 @@
+@charset 'UTF-8'
+
+html
+  font-size: 16px
+a
+  color: inherit
+  text-decoration: none
+
+p
+  padding: 0
+  margin: 0
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin: 0
+  padding: 0
+
+
+.container-fluid
+  width: 100%
+
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl
+  width: 100%
+  margin-right: auto
+  margin-left: auto
+
+@media (max-width: $xs-breakpoint)
+  html
+    font-size: 12px
+
+@media (max-width: $sm-breakpoint)
+  html
+    font-size: 14px
+
+@media ( min-width: $lg-breakpoint)
+  html
+    font-size: 18px
+
+
+@media (min-width: $xs-breakpoint)
+  .container,
+  .container-sm
+    max-width: 540px
+
+@media (min-width: $sm-breakpoint)
+  .container,
+  .container-sm,
+  .container-md
+    max-width: 960px
+
+@media (min-width: $md-breakpoint)
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg
+    max-width: 1140px
+
+@media (min-width: $lg-breakpoint)
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl
+    max-width: 1320px

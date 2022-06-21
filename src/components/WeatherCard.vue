@@ -2,7 +2,7 @@
   <q-card class="my-card">
     <q-card-section class="bg-blue text-white">
       <div class="text-h6">
-        <q-icon :name="icon"></q-icon>
+        <p><q-icon :name="icon"></q-icon> {{ data.weather[0].description }}</p>
       </div>
       <div class="text-subtitle2">{{ data.main.temp }}</div>
     </q-card-section>

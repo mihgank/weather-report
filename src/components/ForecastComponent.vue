@@ -24,14 +24,14 @@
 
 <script setup lang="ts">
 import { api } from 'src/boot/axios';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { WeatherNode } from 'src/models';
 import WeatherCard from './WeatherCard.vue';
 import WeatherChart from './WeatherChart.vue';
 
 let weatherList = ref<WeatherNode[]>([]);
 let weatherLabels = ref([]);
-let weatherData = ref([]);
+let weatherData = ref<number[]>([]);
 let averageTemp = ref();
 
 const forecastRequest = async () => {
@@ -42,16 +42,18 @@ const forecastRequest = async () => {
     weatherLabels.value = data.list.map((el: WeatherNode) => el.dt);
     weatherData.value = data.list.map((el: WeatherNode) => el.main.temp);
 
-    let summaryTemp = 0;
-    for (let el in weatherData.value) {
-      summaryTemp += weatherData.value[el];
-    }
-    averageTemp.value = (summaryTemp / 40).toFixed(2);
+    averageTemp.value = (
+      weatherData.value.reduce((a, b) => a + b) / weatherData.value.length
+    ).toFixed(1);
   }
-  setTimeout(forecastRequest, 60000);
 };
 
-onMounted(async () => {
-  await forecastRequest();
+let forecastInterval: ReturnType<typeof setInterval>;
+onMounted(() => {
+  forecastRequest();
+  forecastInterval = setInterval(forecastRequest, 60000);
+});
+onUnmounted(() => {
+  clearInterval(forecastInterval);
 });
 </script>

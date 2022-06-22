@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { api } from 'src/boot/axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { WeatherNode } from 'src/models';
 import WeatherCard from './WeatherCard.vue';
 
@@ -20,9 +20,14 @@ const weatherRequest = async () => {
   if (data) {
     currentWeather.value = data;
   }
-  setTimeout(weatherRequest, 60000);
 };
+let weatherInterval: ReturnType<typeof setInterval>;
+
 onMounted(async () => {
   await weatherRequest();
+  weatherInterval = setInterval(weatherRequest, 60000);
+});
+onUnmounted(() => {
+  clearInterval(weatherInterval);
 });
 </script>

@@ -5,8 +5,6 @@
 ## Установка
 ```bash
 yarn
-# or
-npm install
 ```
 
 ### Запуск в режиме для разработки (hot-code reloading, error reporting, etc.)
